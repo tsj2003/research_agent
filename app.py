@@ -12,7 +12,11 @@ from langchain.agents import create_tool_calling_agent, AgentExecutor
 from tools import search_tool, wiki_tool, save_tool
 
 # Load environment variables
-load_dotenv()
+try:
+    load_dotenv()
+except ImportError:
+    # If dotenv is not available, continue without it
+    pass
 
 class ResearchResponse(BaseModel):
     topic: str
